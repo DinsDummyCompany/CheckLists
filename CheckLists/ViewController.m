@@ -15,40 +15,65 @@
 @end
 
 @implementation ViewController{
-    CheckListItem *row0Item;
-    CheckListItem *row1Item;
-    CheckListItem *row2Item;
-    CheckListItem *row3Item;
-    CheckListItem *row4Item;
+    NSMutableArray *listItems;
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    row0Item = [[CheckListItem alloc] init];
-    row0Item.name = @"Walk the Dog";
-    row0Item.checked = NO;
     
-    row1Item = [[CheckListItem alloc] init];
-    row1Item.name = @"Brush my teeth";
-    row1Item.checked = NO;
+    // create an array to hold our list of items.
+    listItems = [[NSMutableArray alloc] initWithCapacity:20];
     
-    row2Item = [[CheckListItem alloc] init];
-    row2Item.name = @"Learn Objective-C";
-    row2Item.checked = NO;
+    // define a item object where we'll store some details
+    CheckListItem *item;
     
-    row3Item = [[CheckListItem alloc] init];
-    row3Item.name = @"Pick up kids";
-    row3Item.checked = NO;
+    //allocate and set the acutal details of the check list item.
+    item = [[CheckListItem alloc] init];
+    item.name = @"Walk the Dog";
+    item.checked = NO;
+    // add the item to the array
+    [listItems addObject:item];
     
-    row4Item = [[CheckListItem alloc] init];
-    row4Item.name = @"Wash the car";
-    row4Item.checked = NO;
+    // allocate another object and set some values to it.
+    item = [[CheckListItem alloc] init];
+    item.name = @"Brush my teeth";
+    item.checked = NO;
+    // add it to the array.
+    [listItems addObject:item];
+    
+    // allocate another object and set some values to it.
+    item = [[CheckListItem alloc] init];
+    item.name = @"Learn Objective-C";
+    item.checked = NO;
+    // add it to the array.
+    [listItems addObject:item];
+    
+    // allocate another object and set some values to it.
+    item = [[CheckListItem alloc] init];
+    item.name = @"Pick up kids";
+    item.checked = NO;
+    // add it to the array.
+    [listItems addObject:item];
+    
+    // allocate another object and set some values to it.
+    item = [[CheckListItem alloc] init];
+    item.name = @"Wash the car";
+    item.checked = NO;
+    // add it to the array.
+    [listItems addObject:item];
+    
+    // allocate another object and set some values to it.
+    item = [[CheckListItem alloc] init];
+    item.name = @"Go to Bed!";
+    item.checked = YES;
+    // add it to the array.
+    [listItems addObject:item];
     
     
     
 	
-    // Do any additional setup after loading the view, typically from a nib.
 }
 
 - (void)viewDidUnload
@@ -60,24 +85,16 @@
 
 -(void)configureCheckMarkForCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
 {
-    BOOL isChecked = NO;
-    if (indexPath.row == 0) {
-        isChecked = row0Item.checked;
-    } else if (indexPath.row == 1) {
-        isChecked = row1Item.checked;
-    } else if (indexPath.row == 2) {
-        isChecked = row2Item.checked;
-    } else if (indexPath.row == 3) {
-        isChecked = row3Item.checked;
-    } else if (indexPath.row == 4) {
-        isChecked = row4Item.checked;
-    }
+    // create a check list object to store the values of the passed in item.
+    CheckListItem *item = [listItems objectAtIndex:indexPath.row];
     
-    if (isChecked) {
+    // if the item has a check mark setup, set the accessory.  otherwise don't set it.
+    if (item.checked) {
         cell.accessoryType = UITableViewCellAccessoryCheckmark;
     } else {
         cell.accessoryType = UITableViewCellAccessoryNone;
     }
+    
     
 }
 
@@ -91,28 +108,28 @@
 
 -(NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 5;
+    return [listItems count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    // create a cell to use.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckListItem"];
     
+    // create a check list object to store the values of the passed in /  selected item as per the row.
+    CheckListItem *item = [listItems objectAtIndex:indexPath.row];
+    
+    // grab a pointer to the label we defined in IB.
     UILabel *itemLabel = (UILabel *) [cell viewWithTag:(1000)];
     
-    if (indexPath.row == 0){
-        itemLabel.text = row1Item.name;
-    }else if (indexPath.row == 1){
-        itemLabel.text = row2Item.name;
-    }else if (indexPath.row == 2){
-        itemLabel.text = row3Item.name;
-    }else if (indexPath.row == 3){
-        itemLabel.text = row4Item.name;
-    }else if (indexPath.row == 4){
-        itemLabel.text = row0Item.name;
-    }
-        
+    // set the labels text to be the selected item.
+    itemLabel.text = item.name;
+    
+    //check and set the checkmark.
     [self configureCheckMarkForCell:cell atIndexPath:indexPath];
+    
+    
+    // send it back.
     return cell;
 }
 
@@ -120,11 +137,15 @@
 {
     UITableViewCell *selectedCell = [tableView cellForRowAtIndexPath:indexPath];
     
-    if (selectedCell.accessoryType == UITableViewCellAccessoryNone) {
-        selectedCell.accessoryType = UITableViewCellAccessoryCheckmark;
-    } else {
-        selectedCell.accessoryType = UITableViewCellAccessoryNone;
-    }
+    // create a check list object to store the values of the passed in /  selected item as per the row.
+    CheckListItem *item = [listItems objectAtIndex:indexPath.row];
+   
+    // switch the checks depending on if it's set or now.
+    item.checked = !item.checked;
+    
+    [self configureCheckMarkForCell:selectedCell atIndexPath:indexPath];
+    
+    
     
     
     
