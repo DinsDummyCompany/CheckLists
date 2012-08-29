@@ -83,10 +83,8 @@
 }
 
 
--(void)configureCheckMarkForCell:(UITableViewCell *)cell atIndexPath:(NSIndexPath *)indexPath
+-(void)configureCheckMarkForCell:(UITableViewCell *)cell withChecklistItem:(CheckListItem *) item
 {
-    // create a check list object to store the values of the passed in item.
-    CheckListItem *item = [listItems objectAtIndex:indexPath.row];
     
     // if the item has a check mark setup, set the accessory.  otherwise don't set it.
     if (item.checked) {
@@ -97,6 +95,18 @@
     
     
 }
+
+
+-(void)configureTextForCell:(UITableViewCell *)cell withChecklistItem:(CheckListItem *)item
+{
+    // grab a pointer to the label we defined in IB.
+    UILabel *itemLabel = (UILabel *) [cell viewWithTag:(1000)];
+    
+    // set the labels text to be the selected item.
+    itemLabel.text = item.name;
+
+}
+
 
 
 
@@ -111,23 +121,20 @@
     return [listItems count];
 }
 
+
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     // create a cell to use.
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"CheckListItem"];
     
+
     // create a check list object to store the values of the passed in /  selected item as per the row.
     CheckListItem *item = [listItems objectAtIndex:indexPath.row];
     
-    // grab a pointer to the label we defined in IB.
-    UILabel *itemLabel = (UILabel *) [cell viewWithTag:(1000)];
+    [self configureTextForCell:cell withChecklistItem:item];
     
-    // set the labels text to be the selected item.
-    itemLabel.text = item.name;
-    
-    //check and set the checkmark.
-    [self configureCheckMarkForCell:cell atIndexPath:indexPath];
-    
+    [self configureCheckMarkForCell:cell withChecklistItem:item];
     
     // send it back.
     return cell;
@@ -140,14 +147,10 @@
     // create a check list object to store the values of the passed in /  selected item as per the row.
     CheckListItem *item = [listItems objectAtIndex:indexPath.row];
    
-    // switch the checks depending on if it's set or now.
-    item.checked = !item.checked;
+    [item toggleChecked];
     
-    [self configureCheckMarkForCell:selectedCell atIndexPath:indexPath];
-    
-    
-    
-    
+    [self configureCheckMarkForCell:selectedCell withChecklistItem:item];
+       
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
