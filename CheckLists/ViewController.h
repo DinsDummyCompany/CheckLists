@@ -10,4 +10,6 @@
 
 @interface ViewController : UITableViewController
 
+- (IBAction)addCheckItem:(UIBarButtonItem *)sender;
+
 @end

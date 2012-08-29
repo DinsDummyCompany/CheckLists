@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="Car-0v-hc3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="2.0" toolsVersion="2549" systemVersion="12B19" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="voE-sL-k3k">
     <dependencies>
         <deployment defaultVersion="1296" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="1498"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--View Controller - Checklists-->
         <scene sceneID="btM-9P-FwA">
             <objects>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LUs-Cl-loc" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tableViewController id="Car-0v-hc3" customClass="ViewController" sceneMemberID="viewController">
                     <tableView key="view" opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="THl-us-5Vt">
-                        <rect key="frame" x="0.0" y="20" width="320" height="460"/>
+                        <rect key="frame" x="0.0" y="64" width="320" height="416"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
@@ -39,16 +39,37 @@
                             <outlet property="delegate" destination="Car-0v-hc3" id="cpI-cU-Pcy"/>
                         </connections>
                     </tableView>
+                    <navigationItem key="navigationItem" title="Checklists" id="fRh-Kc-EVi">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="ETV-ys-rKW">
+                            <connections>
+                                <action selector="addCheckItem:" destination="Car-0v-hc3" id="ejl-AP-w2o"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
+            </objects>
+            <point key="canvasLocation" x="621" y="114"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="n9f-MZ-bIW">
+            <objects>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ajl-JE-dZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <navigationController id="voE-sL-k3k" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="vXs-FU-EIN">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="tintColor" red="0.15596697816835473" green="0.59933338994565211" blue="0.21242304325045158" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Car-0v-hc3" kind="relationship" relationship="rootViewController" id="PJf-PW-ZdY"/>
+                    </connections>
+                </navigationController>
             </objects>
             <point key="canvasLocation" x="95" y="114"/>
         </scene>
     </scenes>
-    <classes>
-        <class className="ViewController" superclassName="UITableViewController">
-            <source key="sourceIdentifier" type="project" relativePath="./Classes/ViewController.h"/>
-        </class>
-    </classes>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>

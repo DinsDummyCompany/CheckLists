@@ -155,4 +155,43 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (IBAction)addCheckItem:(UIBarButtonItem *)sender {
+    
+    
+    // get the number of the last index item.
+    int newRowIndex = [listItems count];
+    
+    // create a new check list item object. - add some details to it.
+    CheckListItem *item = [[CheckListItem alloc] init];
+    item.name = @"I am a new Item!";
+    item.checked = NO;
+    // add the item to the array.
+    [listItems addObject:item];
+    
+    
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    
+    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    
+}
+
+
+-(void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [listItems removeObjectAtIndex:indexPath.row];
+    
+    NSArray *indexPaths = [NSArray arrayWithObject:indexPath];
+    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+
+
+
+
+
+
+
 @end
