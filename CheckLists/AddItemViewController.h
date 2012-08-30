@@ -8,11 +8,13 @@
 
 #import <UIKit/UIKit.h>
 
-@interface AddItemViewController : UITableViewController
+@interface AddItemViewController : UITableViewController <UITextFieldDelegate>
 
 -(IBAction)cancel;
 
 -(IBAction)done;
 
+@property (strong, nonatomic) IBOutlet UITextField *textField;
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 
 @end

@@ -13,6 +13,8 @@
 @end
 
 @implementation AddItemViewController
+@synthesize textField;
+@synthesize doneBarButton;
 
 - (id)initWithStyle:(UITableViewStyle)style
 {
@@ -34,8 +36,19 @@
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
+
+-(void)viewWillAppear:(BOOL)animated
+{
+    [super viewWillAppear:animated];
+    
+    [self.textField becomeFirstResponder];
+}
+
+
 - (void)viewDidUnload
 {
+    [self setTextField:nil];
+    [self setDoneBarButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -55,8 +68,9 @@
 
 -(IBAction)done
 {
+    NSLog(@"Contents of the text field %@", self.textField.text);
     [self.presentingViewController dismissViewControllerAnimated:YES completion:nil];
-    NSLog(@"Got to Done");
+    
 
 }
 
@@ -64,6 +78,17 @@
 -(NSIndexPath *)tableView:(UITableView *)tableView willDeselectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return nil;
+}
+
+
+-(BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+
+    NSString *newText = [theTextField.text stringByReplacingCharactersInRange:range withString:string];
+    
+    self.doneBarButton.enabled = ([newText length] > 0);
+    
+    return YES;
 }
 
 
