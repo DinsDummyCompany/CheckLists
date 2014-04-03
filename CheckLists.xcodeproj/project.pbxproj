@@ -144,6 +144,11 @@
 			attributes = {
 				LastUpgradeCheck = 0440;
 				ORGANIZATIONNAME = "Jonathan Carnie";
+				TargetAttributes = {
+					E389BD2915ECCCB500D48223 = {
+						DevelopmentTeam = 6F3Z5468MR;
+					};
+				};
 			};
 			buildConfigurationList = E389BD2415ECCCB500D48223 /* Build configuration list for PBXProject "CheckLists" */;
 			compatibilityVersion = "Xcode 3.2";
@@ -261,9 +266,11 @@
 		E389BD4915ECCCB500D48223 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CheckLists/CheckLists-Prefix.pch";
 				INFOPLIST_FILE = "CheckLists/CheckLists-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -272,9 +279,11 @@
 		E389BD4A15ECCCB500D48223 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "CheckLists/CheckLists-Prefix.pch";
 				INFOPLIST_FILE = "CheckLists/CheckLists-Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};

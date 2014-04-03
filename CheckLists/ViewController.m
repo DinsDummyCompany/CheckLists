@@ -52,21 +52,21 @@
     
     // allocate another object and set some values to it.
     item = [[CheckListItem alloc] init];
-    item.name = @"Pick up kids";
+    item.name = @"Pick up kids from creche";
     item.checked = NO;
     // add it to the array.
     [listItems addObject:item];
     
     // allocate another object and set some values to it.
     item = [[CheckListItem alloc] init];
-    item.name = @"Wash the car";
+    item.name = @"Wash the car on a sunny day";
     item.checked = NO;
     // add it to the array.
     [listItems addObject:item];
     
     // allocate another object and set some values to it.
     item = [[CheckListItem alloc] init];
-    item.name = @"Go to Bed!";
+    item.name = @"Go to Bed early!";
     item.checked = YES;
     // add it to the array.
     [listItems addObject:item];
