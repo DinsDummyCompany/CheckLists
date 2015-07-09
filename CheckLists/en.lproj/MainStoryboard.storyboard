@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="5053" systemVersion="13C64" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="voE-sL-k3k">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8121.17" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" initialViewController="voE-sL-k3k">
     <dependencies>
-        <deployment defaultVersion="1296" identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="3733"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8101.14"/>
     </dependencies>
     <scenes>
-        <!--View Controller - Checklists-->
+        <!--Checklists-->
         <scene sceneID="btM-9P-FwA">
             <objects>
                 <tableViewController id="Car-0v-hc3" customClass="ViewController" sceneMemberID="viewController">
@@ -49,7 +49,7 @@
             </objects>
             <point key="canvasLocation" x="621" y="114"/>
         </scene>
-        <!--Add Item View Controller - Add Item-->
+        <!--Add Item-->
         <scene sceneID="jvY-Yq-lWJ">
             <objects>
                 <tableViewController id="ezs-ff-gSd" customClass="AddItemViewController" sceneMemberID="viewController">
@@ -61,7 +61,7 @@
                             <tableViewSection id="0re-9D-lDr">
                                 <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="none" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="CbI-Ej-oMs">
-                                        <rect key="frame" x="0.0" y="99" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="35" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="CbI-Ej-oMs" id="NP8-Sb-463">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
